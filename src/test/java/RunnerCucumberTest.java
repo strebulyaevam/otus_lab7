@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/lab7/MainMenu.feature",
+        features = "src/test/resources/features/lab7/MainPage.feature",
         glue = "Steps",
         tags = "@all",
         dryRun = false,
