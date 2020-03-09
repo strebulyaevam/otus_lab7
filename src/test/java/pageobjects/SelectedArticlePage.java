@@ -8,17 +8,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
+public class SelectedArticlePage {
 
-public class SelectedArticle {
-
-    private static Logger Log = LogManager.getLogger(SelectedArticle.class);
+    private static Logger Log = LogManager.getLogger(SelectedArticlePage.class);
 
     WebDriver driver;
     WebDriverWait waiter;
     DriverServies driverServies;
 
-    public SelectedArticle(DriverServies driverServies) {
+    public SelectedArticlePage(DriverServies driverServies) {
         this.driverServies = driverServies;
         this.driver = driverServies.getDriver();
         waiter = new WebDriverWait(driver, 4);
@@ -27,7 +25,7 @@ public class SelectedArticle {
 
     By loc_post_caption = By.cssSelector("span.post__title-text");
 
-    public String getPageCaption(){
+    public String getPageCaption() throws Exception {
         return TestHelper.getTextFromElem(driver, waiter, loc_post_caption, "post__title-text");
     }
 
