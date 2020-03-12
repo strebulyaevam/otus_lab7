@@ -1,7 +1,7 @@
 Feature: I can open habr home page with correct content
 
   Scenario: Open habr.com home page
-    Given Browser is open
+    Given Browser "Chrome" is open
     When I open "https://habr.com/"
     Then page title should be "Лучшие публикации за сутки / Хабр"
 
