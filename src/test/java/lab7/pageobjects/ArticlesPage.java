@@ -1,12 +1,13 @@
-package pageobjects;
+package lab7.pageobjects;
 
-import driverconfig.DriverServies;
-import helpers.TestHelper;
+import config.Lab7Config;
+import lab7.helpers.TestHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -14,13 +15,12 @@ public class ArticlesPage {
 
     private static Logger Log = LogManager.getLogger(ArticlesPage.class);
 
+    @Autowired
     WebDriver driver;
-    WebDriverWait waiter;
-    DriverServies driverServies;
 
-    public ArticlesPage(DriverServies driverServies) {
-        this.driverServies = driverServies;
-        this.driver = driverServies.getDriver();
+    WebDriverWait waiter;
+
+    public ArticlesPage() {
         waiter = new WebDriverWait(driver, 4);
         TestHelper.isPageLoad(waiter, loc_menuitem_best, "The Best articles for the week");
     }
@@ -40,7 +40,6 @@ public class ArticlesPage {
 
     public SelectedArticlePage clickOnReadMoreButton(int post_num) throws Exception {
         TestHelper.clickOnElem(waiter, get_loc_readmore_btn_bypostnum(post_num), "Read more btn for " + post_num + "article");
-        return new SelectedArticlePage(driverServies);
+        return new SelectedArticlePage();
     }
-
 }

@@ -1,13 +1,13 @@
-package helpers;
+package lab7.helpers;
 
-import driverconfig.DriverServies;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import pageobjects.ArticlesPage;
+import lab7.pageobjects.ArticlesPage;
 
 public class PageSelector {
     private static Logger Log = LogManager.getLogger(TestHelper.class);
 
+/*
     public static Object getPagebyMenuName (String name, DriverServies driverServies){
         switch(name){
             case "Статьи":
@@ -18,4 +18,5 @@ public class PageSelector {
                 return null;
         }
     }
+*/
 }

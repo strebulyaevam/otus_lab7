@@ -1,31 +1,37 @@
-package pageobjects;
+package lab7.pageobjects;
 
-import driverconfig.DriverServies;
-import helpers.PageSelector;
-import helpers.TestHelper;
+import config.Lab7Config;
+import lab7.helpers.PageSelector;
+import lab7.helpers.TestHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import javax.annotation.PostConstruct;
 import java.util.List;
 
+@Component
 public class MainMenu {
     private static Logger Log = LogManager.getLogger(MainMenu.class);
 
+    @Autowired
     WebDriver driver;
-    WebDriverWait waiter;
-    DriverServies driverServies;
 
-    public MainMenu(DriverServies driverServies) {
-        this.driverServies = driverServies;
-        this.driver = driverServies.getDriver();
+    @Autowired
+    Lab7Config cfg;
+
+    WebDriverWait waiter;
+
+    public MainMenu() {
+    }
+
+    @PostConstruct
+    private void init() {
         waiter = new WebDriverWait(driver, 4);
-        TestHelper.isPageLoad(waiter, loc_1st_item, "Main Menu");
     }
 
     By loc_1st_item = By.xpath("//div[@class = 'tabs__level tabs-level_top tabs-menu']//h3[contains(text(), 'Статьи')]");
@@ -41,7 +47,7 @@ public class MainMenu {
 
     public ArticlesPage selectArticleItem() throws Exception {
         clickItemByName("Статьи");
-        return new ArticlesPage(driverServies);
+        return new ArticlesPage();
      }
 
     public List<String> getAllMainMenuItems(){
@@ -50,5 +56,14 @@ public class MainMenu {
 
     public boolean isMenuItemSelected (String item_name){
         return driver.findElement(loc_menu_item_byname(item_name)).getAttribute("class").contains("tabs-menu__item-text_active");
+   }
+
+   public void openMainPage () throws Exception {
+       TestHelper.getURL(driver, cfg.hostname());
+       TestHelper.isPageLoad(waiter, loc_1st_item, "Main Menu");
+   }
+
+   public String getTitle () {
+        return driver.getTitle();
    }
 }

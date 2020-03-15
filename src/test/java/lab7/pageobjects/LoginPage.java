@@ -1,24 +1,24 @@
-package pageobjects;
+package lab7.pageobjects;
 
-import driverconfig.DriverServies;
-import helpers.TestHelper;
+import lab7.helpers.TestHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class LoginPage {
 
     private static Logger Log = LogManager.getLogger(LoginPage.class);
 
+    @Autowired
     WebDriver driver;
-    WebDriverWait waiter;
-    DriverServies driverServies;
 
-    public LoginPage(DriverServies driverServies) {
-        this.driverServies = driverServies;
-        this.driver = driverServies.getDriver();
+    WebDriverWait waiter;
+
+
+    public LoginPage() {
         waiter = new WebDriverWait(driver, 4);
         TestHelper.isPageLoad(waiter, loc_email, "LoginPage");
     }
