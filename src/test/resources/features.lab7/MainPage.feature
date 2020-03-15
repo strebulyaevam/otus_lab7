@@ -6,6 +6,7 @@ Feature: I can open habr home page with correct content
 
 
    Scenario: Top bar is on the home page
+    Given HomePage is open
     When Top bar is opened
     Then Top bar contains items
            | Все потоки        |
