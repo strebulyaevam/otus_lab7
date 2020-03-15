@@ -7,4 +7,11 @@ Feature: I can open habr home page with correct content
 
    Scenario: Top bar is on the home page
     When Top bar is opened
-    Then Top bar contains items Все потоки, Разработка, Научпоп, Администрирование, Дизайн, Менеджмент, Маркетинг
+    Then Top bar contains items
+           | Все потоки        |
+           | Разработка        |
+           | Научпоп           |
+           | Администрирование |
+           | Дизайн            |
+           | Менеджмент        |
+           | Маркетинг         |
