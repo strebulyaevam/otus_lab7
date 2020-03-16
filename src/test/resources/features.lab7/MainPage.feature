@@ -16,3 +16,10 @@ Feature: I can open habr home page with correct content
            | Дизайн            |
            | Менеджмент        |
            | Маркетинг         |
+
+
+     @Test
+     Scenario: First item of Top bar is selected
+       Given HomePage is open
+       When Top bar is opened
+       Then Top bar menu item "Все потоки" is selected

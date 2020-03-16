@@ -48,16 +48,11 @@ public class MainPageSteps {
         List<String> expResult = expItemsTable.asList(String.class);
         List<String> actualResult = topMenu.getAllTopMenuItems();
         Assert.assertEquals(expResult, actualResult);
+    }
 
-//        techs.forEach(tech -> System.out.println("I can " + tech));
-
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
+    @Then("Top bar menu item {string} is selected")
+    public void top_bar_menu_item_is_selected(String menu_item) {
+        Assert.assertTrue(topMenu.isMenuItemSelected(menu_item));
 //        throw new io.cucumber.java.PendingException();
     }
 
