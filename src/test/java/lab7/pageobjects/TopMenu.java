@@ -41,7 +41,7 @@ public class TopMenu {
     }
 
     public void clickTopMenuItemByName (String menuname) throws Exception {
-        Log.info("Try to click on " + menuname + "menu item in TOP menu");
+        Log.info("Try to click on " + menuname + " menu item in TOP menu");
         TestHelper.clickOnElem(waiter, loc_topmenu_item_byname(menuname), menuname + " menu item in TOP menu");
         Log.info("Get menu " + menuname + " successfully");
     }

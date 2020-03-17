@@ -66,4 +66,8 @@ public class MainMenu {
    public String getTitle () {
         return driver.getTitle();
    }
+
+   public boolean titleContainString (String title_part){
+        return driver.getTitle().contains(title_part);
+   }
 }

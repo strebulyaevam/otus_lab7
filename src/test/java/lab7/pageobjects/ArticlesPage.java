@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 public class ArticlesPage {
@@ -21,12 +22,20 @@ public class ArticlesPage {
     WebDriverWait waiter;
 
     public ArticlesPage() {
+    }
+
+    @PostConstruct
+    private void init() {
         waiter = new WebDriverWait(driver, 4);
-        TestHelper.isPageLoad(waiter, loc_menuitem_best, "The Best articles for the week");
     }
 
     By loc_menuitem_best = By.cssSelector("//a[@href='https://habr.com/ru/top/' and @class='tabs-menu__item tabs-menu__item_link']");
     By loc_menu_items = By.cssSelector("div.tabs__level.tabs__level_bottom a.toggle-menu__item-link");
+
+    public void waitUntilLoad (){
+        TestHelper.isPageLoad(waiter, loc_menuitem_best, "The Best articles for the week");
+    }
+
     public By get_loc_post_title_bynum (int post_num) {return By.cssSelector("ul.content-list.content-list_posts.shortcuts_items>li:nth-child(" + post_num +") a.post__title_link");}
     public By get_loc_readmore_btn_bypostnum (int post_num) {return By.cssSelector("ul.content-list.content-list_posts.shortcuts_items>li:nth-child(" + post_num +") a.btn.btn_x-large.btn_outline_blue.post__habracut-btn");}
 

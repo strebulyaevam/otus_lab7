@@ -50,10 +50,20 @@ public class MainPageSteps {
         Assert.assertEquals(expResult, actualResult);
     }
 
-    @Then("Top bar menu item {string} is selected")
+    @Then("Top bar item {string} is selected")
     public void top_bar_menu_item_is_selected(String menu_item) {
         Assert.assertTrue(topMenu.isMenuItemSelected(menu_item));
-//        throw new io.cucumber.java.PendingException();
     }
+
+    @When("Top bar item {string} is clicked")
+    public void top_bar_item_is_opened(String menu_item) throws Exception {
+        topMenu.clickTopMenuItemByName(menu_item);
+    }
+
+    @Then("Title contains {string}")
+    public void title_contains(String title_part) {
+        Assert.assertTrue(mainMenu.titleContainString(title_part));
+    }
+
 
 }
