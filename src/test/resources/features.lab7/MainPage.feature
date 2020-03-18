@@ -18,30 +18,38 @@ Feature: I can open habr home page with correct content
            | Маркетинг         |
 
 
+
   Scenario: First item of Top bar is selected
        Given HomePage is open
        When Top bar is opened
        Then Top bar item "Все потоки" is selected
 
 
-    Scenario Outline:
-        Given HomePage is open
-        When Top bar item "<name>" is clicked
-        Then Top bar item "<name>" is selected
-        And Title contains "<name>"
-        Examples:
-           | name              |
-           | Разработка        |
-           | Научпоп           |
-           | Администрирование |
-           | Дизайн            |
-           | Менеджмент        |
-           | Маркетинг         |
+  Scenario Outline:
+       Given HomePage is open
+       When Top bar item "<name>" is clicked
+       Then Top bar item "<name>" is selected
+       And Title contains "<name>"
+       Examples:
+          | name              |
+          | Разработка        |
+          | Научпоп           |
+          | Администрирование |
+          | Дизайн            |
+          | Менеджмент        |
+          | Маркетинг         |
 
 
-   @Test
   Scenario: Button "Войти" dispaly the correct page
        Given HomePage is open
        And Top bar is opened
        When button Войти is clicked
        Then LoginPage is displayed
+
+
+  @Test
+  Scenario: Button "Регистрация" dispaly the correct page
+       Given HomePage is open
+       And Top bar is opened
+       When button Регистрация is clicked
+       Then RegistrationPage is displayed

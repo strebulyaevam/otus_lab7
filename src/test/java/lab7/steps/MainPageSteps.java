@@ -5,6 +5,7 @@ import io.cucumber.java.en.When;
 import lab7.TestConfig;
 import lab7.pageobjects.LoginPage;
 import lab7.pageobjects.MainMenu;
+import lab7.pageobjects.RegistrPage;
 import lab7.pageobjects.TopMenu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,6 +21,8 @@ public class MainPageSteps {
     TopMenu topMenu;
     @Autowired
     LoginPage loginPage;
+    @Autowired
+    RegistrPage registrPage;
 
 
 /*
@@ -78,5 +81,17 @@ public class MainPageSteps {
         Assert.assertTrue(mainMenu.titleContainString("Вход"));
         loginPage.waitUntilLoad();
     }
+
+    @When("button Регистрация is clicked")
+    public void button_Регистрация_is_clicked() throws Exception {
+        topMenu.clickOnRegistrButton();
+    }
+
+    @Then("RegistrationPage is displayed")
+    public void registrationpage_is_displayed() {
+        Assert.assertTrue(mainMenu.titleContainString("Регистрация"));
+        registrPage.waitUntilLoad();
+    }
+
 
 }

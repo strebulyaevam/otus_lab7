@@ -7,9 +7,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+@Component
 public class RegistrPage {
     private static Logger Log = LogManager.getLogger(RegistrPage.class);
 
@@ -29,7 +31,7 @@ public class RegistrPage {
     }
 
     public void waitUntilLoad (){
-        TestHelper.isPageLoad(waiter, loc_email, "LoginPage");
+        TestHelper.isPageLoad(waiter, loc_email, "RegistrationPage");
     }
 
 
