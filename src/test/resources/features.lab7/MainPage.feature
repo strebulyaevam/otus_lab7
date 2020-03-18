@@ -24,8 +24,7 @@ Feature: I can open habr home page with correct content
        Then Top bar item "Все потоки" is selected
 
 
-  @Test
-  Scenario Outline:
+    Scenario Outline:
         Given HomePage is open
         When Top bar item "<name>" is clicked
         Then Top bar item "<name>" is selected
@@ -39,3 +38,10 @@ Feature: I can open habr home page with correct content
            | Менеджмент        |
            | Маркетинг         |
 
+
+   @Test
+  Scenario: Button "Войти" dispaly the correct page
+       Given HomePage is open
+       And Top bar is opened
+       When button Войти is clicked
+       Then LoginPage is displayed

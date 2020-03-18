@@ -98,9 +98,10 @@ public class TestHelper {
     {
         try{
             waiter.until(ExpectedConditions.elementToBeClickable(loc_elem));
+            Log.info("Page - " + pageName + " is loaded successfully");
         }catch (Exception e){
             Log.error("Page - " + pageName +" is not loaded");
-            Assert.fail("Page is not loaded");
+            Assert.fail("Page - " + pageName +" is not loaded");
         }
     }
 

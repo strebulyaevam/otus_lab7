@@ -3,6 +3,7 @@ package lab7.steps;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lab7.TestConfig;
+import lab7.pageobjects.LoginPage;
 import lab7.pageobjects.MainMenu;
 import lab7.pageobjects.TopMenu;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,11 @@ public class MainPageSteps {
 
     @Autowired
     MainMenu mainMenu;
-
     @Autowired
     TopMenu topMenu;
+    @Autowired
+    LoginPage loginPage;
+
 
 /*
     @Given("Browser \"([^\"]*)\"$\" is open")
@@ -65,5 +68,15 @@ public class MainPageSteps {
         Assert.assertTrue(mainMenu.titleContainString(title_part));
     }
 
+    @When("button Войти is clicked")
+    public void button_Войти_is_clicked() throws Exception {
+        topMenu.clickOnLoginButton();
+    }
+
+    @Then("LoginPage is displayed")
+    public void loginpage_is_displayed() {
+        Assert.assertTrue(mainMenu.titleContainString("Вход"));
+        loginPage.waitUntilLoad();
+    }
 
 }

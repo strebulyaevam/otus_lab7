@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
+
 public class RegistrPage {
     private static Logger Log = LogManager.getLogger(RegistrPage.class);
 
@@ -17,9 +19,18 @@ public class RegistrPage {
     WebDriverWait waiter;
 
     public RegistrPage() {
-        waiter = new WebDriverWait(driver, 4);
-        TestHelper.isPageLoad(waiter, loc_email, "LoginPage");
     }
 
     By loc_email = By.cssSelector("input[type='email']");
+
+    @PostConstruct
+    private void init() {
+        waiter = new WebDriverWait(driver, 4);
+    }
+
+    public void waitUntilLoad (){
+        TestHelper.isPageLoad(waiter, loc_email, "LoginPage");
+    }
+
+
 }
