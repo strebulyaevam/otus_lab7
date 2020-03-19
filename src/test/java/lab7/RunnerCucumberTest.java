@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 @CucumberOptions(
         features = "src/test/resources/features.lab7",
         glue = "lab7",
-        tags = "@Test",
+//        tags = "@Test",
         dryRun = false,
         strict = false
 )

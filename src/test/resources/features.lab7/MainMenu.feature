@@ -13,7 +13,7 @@ Feature: I can use  habr.com main menu to get the content
   Scenario: First item of Main menu is selected
        Given HomePage is open
        When Main Menu is opened
-       Then "Статьи" is selected
+       Then Main menu item "Статьи" is selected
 
 
   Scenario Outline:
@@ -29,7 +29,6 @@ Feature: I can use  habr.com main menu to get the content
            | Компании |
 
 
-  @Test
   Scenario: Click on Статьи menu dispaly the correct page
        Given HomePage is open
        And Main Menu is opened
