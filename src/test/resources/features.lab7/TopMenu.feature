@@ -1,4 +1,4 @@
-Feature: I can open habr home page with correct content
+Feature: I can use  habr.com top bar to get the content
 
   Scenario: Open habr.com home page
     When HomePage is open
@@ -47,7 +47,6 @@ Feature: I can open habr home page with correct content
        Then LoginPage is displayed
 
 
-  @Test
   Scenario: Button "Регистрация" dispaly the correct page
        Given HomePage is open
        And Top bar is opened

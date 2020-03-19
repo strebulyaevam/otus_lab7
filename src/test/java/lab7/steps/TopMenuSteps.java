@@ -13,7 +13,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class MainPageSteps {
+public class TopMenuSteps {
 
     @Autowired
     MainMenu mainMenu;
