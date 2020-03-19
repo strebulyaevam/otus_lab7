@@ -31,5 +31,9 @@ public class MainMenuSteps {
         Assert.assertTrue(mainMenu.isMenuItemSelected(menu_item));
     }
 
+    @When("Main menu item {string} is clicked")
+    public void main_menu_item_is_clicked(String menu_item) throws Exception {
+        mainMenu.clickItemByName(menu_item);
+    }
 
 }

@@ -10,38 +10,21 @@ Feature: I can use  habr.com main menu to get the content
            | КОМПАНИИ |
 
 
-  @Test
   Scenario: First item of Main menu is selected
        Given HomePage is open
        When Main Menu is opened
-       Then Main menu item "Статьи" is selected
-
-
-  Scenario Outline:
-       Given HomePage is open
-       When Top bar item "<name>" is clicked
-       Then Top bar item "<name>" is selected
-       And Title contains "<name>"
-       Examples:
-          | name              |
-          | Разработка        |
-          | Научпоп           |
-          | Администрирование |
-          | Дизайн            |
-          | Менеджмент        |
-          | Маркетинг         |
-
-
-  Scenario: Button "Войти" dispaly the correct page
-       Given HomePage is open
-       And Top bar is opened
-       When button Войти is clicked
-       Then LoginPage is displayed
+       Then "Статьи" is selected
 
 
   @Test
-  Scenario: Button "Регистрация" dispaly the correct page
+  Scenario Outline:
        Given HomePage is open
-       And Top bar is opened
-       When button Регистрация is clicked
-       Then RegistrationPage is displayed
+       When Main menu item "<name>" is clicked
+       Then Main menu item "<name>" is selected
+       Examples:
+           | name     |
+           | Статьи   |
+           | Новости  |
+           | Хабы     |
+           | Авторы   |
+           | Компании |

@@ -44,9 +44,7 @@ public class MainMenu {
 
     public void clickItemByName (String menuname) throws Exception {
         By loc_item = By.xpath("//div[@class = 'tabs__level tabs-level_top tabs-menu']//h3[contains(text(), '" + menuname + "')]");
-        Log.info("Try to click on " + menuname + "menu item");
-        TestHelper.clickOnElem(waiter, loc_item, "SignIn and Registr btn");
-        Log.info("Get menu " + menuname + " successfully");
+        TestHelper.clickOnElem(waiter, loc_item, menuname);
     }
 
     public ArticlesPage selectArticleItem() throws Exception {
