@@ -1,6 +1,5 @@
 Feature: I can use  habr.com main menu to get the content
 
-  @Test
   Scenario: Main menu is on the home page
     When HomePage is open
     Then Main menu contains items
@@ -11,11 +10,11 @@ Feature: I can use  habr.com main menu to get the content
            | КОМПАНИИ |
 
 
-
-  Scenario: First item of Top bar is selected
+  @Test
+  Scenario: First item of Main menu is selected
        Given HomePage is open
-       When Top bar is opened
-       Then Top bar item "Все потоки" is selected
+       When Main Menu is opened
+       Then Main menu item "Статьи" is selected
 
 
   Scenario Outline:

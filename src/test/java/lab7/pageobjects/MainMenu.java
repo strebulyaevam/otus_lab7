@@ -38,6 +38,10 @@ public class MainMenu {
     By loc_main_menu = By.cssSelector("div.tabs__level.tabs-level_top.tabs-menu h3.tabs-menu__item-text");
     By loc_menu_item_byname(String item_name){ return By.xpath("//div[@class = 'tabs__level tabs-level_top tabs-menu']//h3[ contains(text(), '" + item_name +"')]");}
 
+    public void waitUntilLoad (){
+        TestHelper.isPageLoad(waiter, loc_1st_item, "Main Menu");
+    }
+
     public void clickItemByName (String menuname) throws Exception {
         By loc_item = By.xpath("//div[@class = 'tabs__level tabs-level_top tabs-menu']//h3[contains(text(), '" + menuname + "')]");
         Log.info("Try to click on " + menuname + "menu item");
