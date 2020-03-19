@@ -47,10 +47,12 @@ public class MainMenu {
         TestHelper.clickOnElem(waiter, loc_item, menuname);
     }
 
+/*
     public ArticlesPage selectArticleItem() throws Exception {
         clickItemByName("Статьи");
         return new ArticlesPage();
      }
+*/
 
     public List<String> getAllMainMenuItems(){
         return TestHelper.getAllMenuItems(driver, loc_main_menu);

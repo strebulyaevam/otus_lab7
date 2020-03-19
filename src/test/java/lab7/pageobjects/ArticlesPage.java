@@ -41,10 +41,6 @@ public class ArticlesPage {
     public By get_loc_post_title_bynum (int post_num) {return By.cssSelector("ul.content-list.content-list_posts.shortcuts_items>li:nth-child(" + post_num +") a.post__title_link");}
     public By get_loc_readmore_btn_bypostnum (int post_num) {return By.cssSelector("ul.content-list.content-list_posts.shortcuts_items>li:nth-child(" + post_num +") a.btn.btn_x-large.btn_outline_blue.post__habracut-btn");}
 
-    public String getTitle (){
-        return "Лучшие публикации за сутки / Хабр";
-    }
-
     public List<String> getAllArticleMenuItems(){
         return TestHelper.getAllMenuItems(driver, loc_menu_items);
     }

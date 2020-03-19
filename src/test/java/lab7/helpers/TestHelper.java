@@ -102,8 +102,7 @@ public class TestHelper {
             Log.info("Page - " + pageName + " is loaded successfully");
         }catch (Exception e){
             Log.error("Page - " + pageName +" is not loaded");
-            throw e;
-            //            Assert.fail("Page - " + pageName +" is not loaded");
+            Assert.fail("Page - " + pageName +" is not loaded");
         }
     }
 

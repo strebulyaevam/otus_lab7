@@ -25,13 +25,6 @@ public class TopMenuSteps {
     RegistrPage registrPage;
 
 
-/*
-    @Given("Browser \"([^\"]*)\"$\" is open")
-    public void openBrowser(String browser) {
-        mainPage.openTopic(index - 1);
-    }
-*/
-
     @When("HomePage is open")
     public void openHost() throws Exception {
         mainMenu.openMainPage();
