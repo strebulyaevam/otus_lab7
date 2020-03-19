@@ -8,10 +8,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
+@Component
 public class ArticlesPage {
 
     private static Logger Log = LogManager.getLogger(ArticlesPage.class);
@@ -29,11 +31,11 @@ public class ArticlesPage {
         waiter = new WebDriverWait(driver, 4);
     }
 
-    By loc_menuitem_best = By.cssSelector("//a[@href='https://habr.com/ru/top/' and @class='tabs-menu__item tabs-menu__item_link']");
+    By loc_menuitem_best = By.xpath("//a[@href='https://habr.com/ru/top/' and @class='toggle-menu__item-link toggle-menu__item-link_active' and contains(text(), 'Лучшие')]/parent::li");
     By loc_menu_items = By.cssSelector("div.tabs__level.tabs__level_bottom a.toggle-menu__item-link");
 
     public void waitUntilLoad (){
-        TestHelper.isPageLoad(waiter, loc_menuitem_best, "The Best articles for the week");
+        TestHelper.isPageLoad(waiter, loc_menuitem_best, "The Best articles");
     }
 
     public By get_loc_post_title_bynum (int post_num) {return By.cssSelector("ul.content-list.content-list_posts.shortcuts_items>li:nth-child(" + post_num +") a.post__title_link");}

@@ -16,7 +16,6 @@ Feature: I can use  habr.com main menu to get the content
        Then "Статьи" is selected
 
 
-  @Test
   Scenario Outline:
        Given HomePage is open
        When Main menu item "<name>" is clicked
@@ -28,3 +27,11 @@ Feature: I can use  habr.com main menu to get the content
            | Хабы     |
            | Авторы   |
            | Компании |
+
+
+  @Test
+  Scenario: Click on Статьи menu dispaly the correct page
+       Given HomePage is open
+       And Main Menu is opened
+       When Main menu item "Статьи" is clicked
+       Then ArticlesPage is displayed

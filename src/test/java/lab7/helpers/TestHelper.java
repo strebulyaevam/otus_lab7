@@ -1,5 +1,6 @@
 package lab7.helpers;
 
+import net.bytebuddy.implementation.bytecode.Throw;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -101,7 +102,8 @@ public class TestHelper {
             Log.info("Page - " + pageName + " is loaded successfully");
         }catch (Exception e){
             Log.error("Page - " + pageName +" is not loaded");
-            Assert.fail("Page - " + pageName +" is not loaded");
+            throw e;
+            //            Assert.fail("Page - " + pageName +" is not loaded");
         }
     }
 
