@@ -16,33 +16,15 @@ import java.util.List;
 public class TopMenuSteps {
 
     @Autowired
-    MainMenu mainMenu;
-    @Autowired
     TopMenu topMenu;
-    @Autowired
-    LoginPage loginPage;
-    @Autowired
-    RegistrPage registrPage;
-
-
-    @When("HomePage is open")
-    public void openHost() throws Exception {
-        mainMenu.openMainPage();
-    }
-
-    @Then("page title should be {string}")
-    public void page_title_should_be(String title) {
-        Assert.assertEquals(mainMenu.getTitle(), title);
-
-    }
 
     @When("Top bar is opened")
-    public void topMenuisOpened() throws Exception {
+    public void topMenuIsOpened() throws Exception {
         topMenu.waitUntilLoad();
     }
 
     @Then("Top bar contains items")
-    public void top_bar_contains_items(io.cucumber.datatable.DataTable expItemsTable) {
+    public void topBarContainsItems(io.cucumber.datatable.DataTable expItemsTable) {
 
         List<String> expResult = expItemsTable.asList(String.class);
         List<String> actualResult = topMenu.getAllTopMenuItems();
@@ -50,41 +32,26 @@ public class TopMenuSteps {
     }
 
     @Then("Top bar item {string} is selected")
-    public void top_bar_menu_item_is_selected(String menu_item) {
+    public void topBarItemIsSelected(String menu_item) {
         Assert.assertTrue(topMenu.isMenuItemSelected(menu_item));
     }
 
     @When("Top bar item {string} is clicked")
-    public void top_bar_item_is_opened(String menu_item) throws Exception {
+    public void topBarItemIsOpened(String menu_item) throws Exception {
         topMenu.clickTopMenuItemByName(menu_item);
     }
 
-    @Then("Title contains {string}")
-    public void title_contains(String title_part) {
-        Assert.assertTrue(mainMenu.titleContainString(title_part));
-    }
-
     @When("button Войти is clicked")
-    public void button_Войти_is_clicked() throws Exception {
+    public void buttonLoginIsClicked() throws Exception {
         topMenu.clickOnLoginButton();
     }
 
-    @Then("LoginPage is displayed")
-    public void loginpage_is_displayed() {
-        Assert.assertTrue(mainMenu.titleContainString("Вход"));
-        loginPage.waitUntilLoad();
-    }
 
     @When("button Регистрация is clicked")
-    public void button_Регистрация_is_clicked() throws Exception {
+    public void buttonRegistrIsClicked() throws Exception {
         topMenu.clickOnRegistrButton();
     }
 
-    @Then("RegistrationPage is displayed")
-    public void registrationpage_is_displayed() {
-        Assert.assertTrue(mainMenu.titleContainString("Регистрация"));
-        registrPage.waitUntilLoad();
-    }
 
 
 }

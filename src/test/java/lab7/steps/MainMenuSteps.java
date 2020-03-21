@@ -14,11 +14,23 @@ public class MainMenuSteps {
     @Autowired
     MainMenu mainMenu;
 
-    @Autowired
-    ArticlesPage articlesPage;
+    @When("HomePage is open")
+    public void openHost() throws Exception {
+        mainMenu.openMainPage();
+    }
+
+    @Then("page title should be {string}")
+    public void pageTitleShouldBe(String title) {
+        Assert.assertEquals(mainMenu.getTitle(), title);
+    }
+
+    @Then("Title contains {string}")
+    public void titleContains(String title_part) {
+        Assert.assertTrue(mainMenu.titleContainString(title_part));
+    }
 
     @Then("Main menu contains items")
-    public void main_menu_contains_items(io.cucumber.datatable.DataTable expItemsTable) {
+    public void mainMenuContainsItems(io.cucumber.datatable.DataTable expItemsTable) {
 
         List<String> expResult = expItemsTable.asList(String.class);
         List<String> actualResult = mainMenu.getAllMainMenuItems();
@@ -26,24 +38,17 @@ public class MainMenuSteps {
     }
 
     @When("Main Menu is opened")
-    public void main_Menu_is_opened() {
+    public void mainMenuIsOpened() {
         mainMenu.waitUntilLoad();
     }
 
     @Then("Main menu item {string} is selected")
-    public void main_menu_item_is_selected(String menu_item) {
+    public void mainMenuItemIsSelected(String menu_item) {
         Assert.assertTrue(mainMenu.isMenuItemSelected(menu_item));
     }
 
     @When("Main menu item {string} is clicked")
-    public void main_menu_item_is_clicked(String menu_item) throws Exception {
+    public void mainMenuItemIsClicked(String menu_item) throws Exception {
         mainMenu.clickItemByName(menu_item);
     }
-
-    @Then("ArticlesPage is displayed")
-    public void articlespage_is_displayed() {
-        articlesPage.waitUntilLoad();
-    }
-
-
 }

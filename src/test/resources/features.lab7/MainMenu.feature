@@ -16,7 +16,7 @@ Feature: I can use  habr.com main menu to get the content
        Then Main menu item "Статьи" is selected
 
 
-  Scenario Outline:
+  Scenario Outline: Click MainMenu tab "<name>"
        Given HomePage is open
        When Main menu item "<name>" is clicked
        Then Main menu item "<name>" is selected

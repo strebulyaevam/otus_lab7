@@ -25,7 +25,7 @@ Feature: I can use  habr.com top bar to get the content
        Then Top bar item "Все потоки" is selected
 
 
-  Scenario Outline:
+  Scenario Outline: Click TopBar tab "<name>"
        Given HomePage is open
        When Top bar item "<name>" is clicked
        Then Top bar item "<name>" is selected
