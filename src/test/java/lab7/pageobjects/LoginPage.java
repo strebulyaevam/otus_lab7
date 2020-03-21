@@ -35,6 +35,4 @@ public class LoginPage {
     public void waitUntilLoad (){
         TestHelper.isPageLoad(waiter, loc_email, "LoginPage");
     }
-
-
 }
