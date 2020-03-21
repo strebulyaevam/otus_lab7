@@ -13,6 +13,7 @@ import org.testng.Assert;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TestHelper {
 
@@ -140,6 +141,7 @@ public class TestHelper {
         if (elements == null)
             return Collections.EMPTY_LIST;
 
+/*
         List<String> menunames = new ArrayList<>();
         for (WebElement element : elements) {
             String name = element.getText();
@@ -147,6 +149,14 @@ public class TestHelper {
                 menunames.add(name);
             }
         }
+*/
+
+        List<String> menunames =
+                elements.stream()
+                        .map(WebElement::getText)
+                        .filter(name -> name != null && name.length() > 0)
+                        .collect(Collectors.toList());
+
         return menunames;
     }
 

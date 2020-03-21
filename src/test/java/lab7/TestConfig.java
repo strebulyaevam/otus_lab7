@@ -22,6 +22,8 @@ public class TestConfig {
 
     private static Logger Log = LogManager.getLogger(TestConfig.class);
 
+    private enum Browser{chrome, firefox};
+
     @Autowired
     Lab7Config config;
 
@@ -36,15 +38,23 @@ public class TestConfig {
 
     @Bean
     public WebDriver getDriver() {
+        Browser browser;
+        try {
+            browser = Browser.valueOf(config.browser().toLowerCase());
+        } catch (IllegalArgumentException e) {
+            Log.error("Unknown browser " + config.browser(), e);
+            throw e;
+        }
+
         WebDriver driver = null;
-        if ("Chrome".equals(config.browser())) {
+        if (browser == Browser.chrome) {
             WebDriverManager.chromedriver().setup();
             driver = new org.openqa.selenium.chrome.ChromeDriver();
-        } else if ("Firefox".equals(config.browser())) {
+        } else if (browser == Browser.firefox) {
             WebDriverManager.firefoxdriver().setup();
             driver = new org.openqa.selenium.firefox.FirefoxDriver();
         } else {
-            Log.error("Unknown browser type");
+            Log.error("Unknown browser type " + browser.name());
         }
 
         driver.manage().timeouts().implicitlyWait(4L, TimeUnit.SECONDS);

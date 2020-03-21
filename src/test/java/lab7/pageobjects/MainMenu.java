@@ -1,7 +1,6 @@
 package lab7.pageobjects;
 
 import config.Lab7Config;
-import lab7.helpers.PageSelector;
 import lab7.helpers.TestHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
